@@ -1,6 +1,10 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
 
+        # impossible to be anagram if not same length
+        if len(s) != len(t):
+            return False
+
         # dictionay to keep track of frequency of each char in both strings
         s_count = {}
         t_count = {}
