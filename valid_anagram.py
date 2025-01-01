@@ -9,7 +9,6 @@ class Solution:
         s_count = {}
         t_count = {}
 
-
         # populate dict using string s
         for char in s:
             if char not in s_count:
