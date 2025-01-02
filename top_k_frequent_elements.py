@@ -4,6 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :type k: int
         :rtype: List[int]
+        Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
         """
         
         # dict used to keep track of each number's frequency
