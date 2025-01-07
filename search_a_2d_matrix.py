@@ -9,15 +9,28 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
 
-        # Initialize the current row to the first row
-        current_row = 0
-
-        # Find the row where the first element is bigger than target
-        while current_row < len(matrix) and matrix[current_row][0] <= target:
-            current_row += 1
         
-        # look at row before the bigger element of target's row (correct spot to perform binary search)
-        current_row -= 1
+        # binary search for row that target will be in
+        top_row = 0
+        bottom_row = len(matrix) - 1
+
+        while top_row <= bottom_row:
+
+            # look at first and last elements of mid row to decide what half of the rows to look at 
+            mid = (top_row + bottom_row) // 2
+
+            # look at bottom half of the rows
+            if target > matrix[mid][-1]:
+                top_row = mid + 1
+            # look at top half of the rows
+            elif target < matrix[mid][0]:
+                bottom_row = mid - 1
+            # found a mid row with that the target might be in
+            else:
+                break
+                
+        # store that row as current_row to perform binary search
+        current_row = (top_row + bottom_row) // 2
 
         # basic binary search on certain row of 2d matrix
         l,r = 0, len(matrix[0]) - 1
